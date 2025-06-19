@@ -1,7 +1,7 @@
 name: tamimah_storage
 description: "A comprehensive Flutter local storage package with secure storage, database management, cache, encryption, and offline sync capabilities."
 version: 0.0.1
-homepage: https://github.com/your-username/tamimah_storage
+homepage: https://github.com/Tamimah-Research/tamimah_storage
 
 environment:
   sdk: ^3.8.1
@@ -12,20 +12,20 @@ dependencies:
     sdk: flutter
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  shared_preferences: ^2.2.2
-  crypto: ^3.0.3
+  shared_preferences: ^2.5.3
+  crypto: ^3.0.6
   encrypt: ^5.0.3
-  path_provider: ^2.1.1
-  uuid: ^4.2.1
-  connectivity_plus: ^5.0.2
-  http: ^1.1.0
+  path_provider: ^2.1.5
+  uuid: ^4.5.1
+  connectivity_plus: ^6.1.4
+  http: ^1.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   hive_generator: ^2.0.1
-  build_runner: ^2.4.7
+  build_runner: ^2.5.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

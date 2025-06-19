@@ -14,7 +14,8 @@ class OfflineSync {
   static late Box<SyncItem> _syncBox;
   static bool _initialized = false;
   static Timer? _syncTimer;
-  static StreamSubscription<ConnectivityResult>? _connectivitySubscription;
+  static StreamSubscription<List<ConnectivityResult>>?
+  _connectivitySubscription;
   static bool _isOnline = false;
   static final Uuid _uuid = Uuid();
 
@@ -45,14 +46,17 @@ class OfflineSync {
   static Future<void> _setupConnectivityMonitoring() async {
     // Check initial connectivity
     final connectivityResult = await Connectivity().checkConnectivity();
-    _isOnline = connectivityResult != ConnectivityResult.none;
+    _isOnline = connectivityResult.any(
+      (result) => result != ConnectivityResult.none,
+    );
 
     // Listen for connectivity changes
     _connectivitySubscription = Connectivity().onConnectivityChanged.listen((
-      ConnectivityResult result,
+      List<ConnectivityResult> results,
     ) {
       final wasOnline = _isOnline;
-      _isOnline = result != ConnectivityResult.none;
+      // Check if any of the results indicate we're online
+      _isOnline = results.any((result) => result != ConnectivityResult.none);
 
       // If we just came online, trigger sync
       if (!wasOnline && _isOnline) {
